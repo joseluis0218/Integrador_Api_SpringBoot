@@ -28,12 +28,12 @@ public class UsuarioRepository {
 		List<Usuario> usuarios = jdbcTemplate.query(sql, new RowMapper<Usuario>() {
 			public Usuario  mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Usuario usuario = new Usuario();
-				usuario.setId_usuario(rs.getInt(1));
-				usuario.setNombres(rs.getString(2));
-				usuario.setApellidos(rs.getString(3));
-				usuario.setUsuario(rs.getString(4));
-				usuario.setContraseña(rs.getString(5));
-				usuario.setEmail(rs.getString(6));
+				usuario.setId_usuario(rs.getInt("id_usuario"));
+				usuario.setNombres(rs.getString("nombres"));
+				usuario.setApellidos(rs.getString("apellidos"));
+				usuario.setUsuario(rs.getString("usuario"));
+				usuario.setContraseña(rs.getString("contraseña"));
+				usuario.setEmail(rs.getString("email"));
 				return usuario;
 
 			}				

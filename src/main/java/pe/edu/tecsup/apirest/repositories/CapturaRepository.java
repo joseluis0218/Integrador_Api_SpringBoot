@@ -27,6 +27,7 @@ public class CapturaRepository {
 				Captura captura = new Captura();
 				captura.setId_captura(rs.getInt("id_captura"));
 				captura.setFecha_captura(rs.getDate("fecha_captura"));
+				captura.setCantidad_rostros(rs.getInt("cantidad_rostros"));
 				captura.setNombre_captura(rs.getString("nombre_captura"));
 				captura.setId_usuario(rs.getInt("id_usuario"));
 				return captura;

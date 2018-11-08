@@ -6,6 +6,7 @@ public class Captura {
 	private Integer id_captura;
 	private Date fecha_captura;
 	private String nombre_captura;
+	private Integer cantidad_rostros;
 	private Integer id_usuario;
 	
 	public Integer getId_captura() {
@@ -26,7 +27,12 @@ public class Captura {
 	public void setNombre_captura(String nombre_captura) {
 		this.nombre_captura = nombre_captura;
 	}
-	
+	public Integer getCantidad_rostros() {
+		return cantidad_rostros;
+	}
+	public void setCantidad_rostros(Integer cantidad_rostros) {
+		this.cantidad_rostros = cantidad_rostros;
+	}
 	public Integer getId_usuario() {
 		return id_usuario;
 	}
@@ -36,7 +42,7 @@ public class Captura {
 	
 	@Override
 	public String toString() {
-		return "Captura[id_captura="+id_captura+",fecha_captura="+fecha_captura+",nombre_captura="+nombre_captura+",id_usuario="+id_usuario+"]";
+		return "Captura[id_captura="+id_captura+",fecha_captura="+fecha_captura+",nombre_captura="+nombre_captura+",cantidad_rostros="+cantidad_rostros+",id_usuario="+id_usuario+"]";
 	}
 	
 }

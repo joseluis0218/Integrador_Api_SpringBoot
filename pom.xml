@@ -6,7 +6,7 @@
 	<groupId>pe.edu.tecsup</groupId>
 	<artifactId>Api-Rest-Integrador2018-II</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>Api-Rest-Integrador2018-II</name>
 	<description>Servicio Rest Integrador</description>
 
