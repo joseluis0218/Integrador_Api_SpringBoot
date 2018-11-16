@@ -37,7 +37,8 @@ public class Usuario implements Serializable {
 
 	private String apellidos;
 	@NotNull
-
+	@NotNull
+	private String sexo;
 	private String usuario;
 	@NotNull
 	private String contraseña;
@@ -65,6 +66,12 @@ public class Usuario implements Serializable {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
+	public String getSexo() {
+		return sexo;
+	}
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
 	public String getUsuario() {
 		return usuario;
 	}
@@ -89,8 +96,9 @@ public class Usuario implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Usuario [id_usuario=" + id_usuario + ", nombres=" + nombres + ", apellidos=" + apellidos + ", usuario="
-				+ usuario + ", contraseña=" + contraseña + ", email=" + email + "]";
+		return "Usuario [id_usuario=" + id_usuario + ", nombres=" + nombres + ", apellidos=" + apellidos + ", sexo="
+				+ sexo + ", usuario=" + usuario + ", contraseña=" + contraseña + ", email=" + email + "]";
 	}
+	
 	
 }
