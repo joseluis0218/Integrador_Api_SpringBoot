@@ -24,7 +24,7 @@ public class EstadoController {
 	@Autowired
 	EstadoDao estadoDao;
 	
-	@PostMapping("/estados")
+	@PostMapping(value="/estados", headers="content-type=application/x-www-form-urlencoded")
 	public Estado createEstado(@Valid @RequestBody Estado estado) {
 		return estadoDao.save(estado);
 	}

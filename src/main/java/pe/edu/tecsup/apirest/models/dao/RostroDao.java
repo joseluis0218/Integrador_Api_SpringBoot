@@ -20,7 +20,7 @@ public class RostroDao {
 	}
 	
 	public Rostro findOne(Long rostroid) {
-		return rostroRepository.getOne(rostroid);
+		return rostroRepository.findById(rostroid);
 	}
 	
 	public void delete(Rostro rostro) {

@@ -21,7 +21,7 @@ public class RostroController {
 	@Autowired
 	RostroDao rostroDao;
 	
-	@PostMapping("/rostros")
+	@PostMapping(value="/rostros", headers="content-type=application/x-www-form-urlencoded")
 	public Rostro createRostro(@Valid @RequestBody Rostro user) {
 		return rostroDao.save(user);
 	}
@@ -46,7 +46,7 @@ public class RostroController {
 		if(rostro==null) {
 			return ResponseEntity.notFound().build();
 		}
-		rostro.setId_rostro(rostroDetails.getId_rostro());
+
 		rostro.setGenero_rostro(rostroDetails.getGenero_rostro());
 		rostro.setEstado(rostroDetails.getEstado());
 		Rostro updateRostro = rostroDao.save(rostro);

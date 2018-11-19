@@ -36,7 +36,7 @@ public class CapturaController {
 	@Autowired
 	CapturaDao capturaDao;
 	
-	@PostMapping("/capturas")
+	@PostMapping(value="/capturas", headers="content-type=application/x-www-form-urlencoded")
 	public Captura createUser(@Valid @RequestBody Captura captura) {
 		return capturaDao.save(captura);
 	}

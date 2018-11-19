@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,22 +23,18 @@ public class Rostro implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_rostro;
+	private Long id;
 	@NotNull
 	private String genero_rostro;
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name = "id_captura")
-	@JsonIgnore
-	private Captura captura;
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="id_estado")
+	@JoinColumn(name = "id_estado")
 	private Estado estado;
 
-	public Long getId_rostro() {
-		return id_rostro;
+	public Long getId() {
+		return id;
 	}
-	public void setId_rostro(Long id_rostro) {
-		this.id_rostro = id_rostro;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getGenero_rostro() {
 		return genero_rostro;
@@ -54,18 +49,12 @@ public class Rostro implements Serializable{
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
-
-	public Captura getCaptura() {
-		return captura;
-	}
-	public void setCaptura(Captura captura) {
-		this.captura = captura;
-	}
 	@Override
 	public String toString() {
-		return "Rostro [id_rostro=" + id_rostro + ", genero_rostro=" + genero_rostro + ", captura=" + captura
-				+ ", estado=" + estado + "]";
+		return "Rostro [id=" + id + ", genero_rostro=" + genero_rostro + ", estado=" + estado + "]";
 	}
+
+
 	
 	
 	

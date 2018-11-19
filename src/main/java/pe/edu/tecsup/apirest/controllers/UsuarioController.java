@@ -22,7 +22,7 @@ public class UsuarioController {
 	@Autowired
 	UsuarioDao usuarioDao;
 	
-	@PostMapping("/usuarios")
+	@PostMapping(value="/usuarios", headers="content-type=application/x-www-form-urlencoded")
 	public Usuario createUser(@Valid @RequestBody Usuario user) {
 		return usuarioDao.save(user);
 	}
@@ -32,7 +32,7 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/usuarios/{id_usuario}")
-	public ResponseEntity<Usuario> getUserById(@PathVariable(value="id_usuario") Long userid){
+	public ResponseEntity<Usuario> getUsuarioByIdUsuario(@PathVariable(value="id_usuario") Long userid){
 			
 		Usuario user = usuarioDao.findOne(userid);
 		if(user==null) {

@@ -1,6 +1,5 @@
 package pe.edu.tecsup.apirest.models;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -10,17 +9,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="rest_capturas")
 public class Captura implements Serializable {
@@ -30,7 +26,7 @@ public class Captura implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_captura;
+	private Long id;
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -39,19 +35,15 @@ public class Captura implements Serializable {
 	private String nombre_captura;
 	@NotNull
 	private Integer cantidad_rostros;
-/*	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name="id_captura")
-	private List<Rostro> rostros;*/
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name = "id_usuario")
-	@JsonIgnore
-	private Usuario usuario;
+	private List<Rostro> rostros;
 	
-	public Long getId_captura() {
-		return id_captura;
+	public Long getId() {
+		return id;
 	}
-	public  void setId_captura(Long id_captura) {
-		this.id_captura = id_captura;
+	public  void setId(Long id) {
+		this.id = id;
 	}
 	public Date getFecha_captura() {
 		return fecha_captura;
@@ -71,28 +63,17 @@ public class Captura implements Serializable {
 	public void setCantidad_rostros(Integer cantidad_rostros) {
 		this.cantidad_rostros = cantidad_rostros;
 	}
-/*	public List<Rostro> getRostros() {
+	public List<Rostro> getRostros() {
 		return rostros;
 	}
 	public void setRostros(List<Rostro> rostros) {
 		this.rostros = rostros;
 	}
-	public void addRostros(Rostro rostro) {
-		this.rostros.add(rostro);
-	}*/
-	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
 	@Override
 	public String toString() {
-		return "Captura [id_captura=" + id_captura + ", fecha_captura=" + fecha_captura + ", nombre_captura="
-				+ nombre_captura + ", cantidad_rostros=" + cantidad_rostros + ", usuario=" + usuario + "]";
+		return "Captura [id=" + id + ", fecha_captura=" + fecha_captura + ", nombre_captura=" + nombre_captura
+				+ ", cantidad_rostros=" + cantidad_rostros + ", rostros=" + rostros + "]";
 	}
-	
-	
+
 	
 }

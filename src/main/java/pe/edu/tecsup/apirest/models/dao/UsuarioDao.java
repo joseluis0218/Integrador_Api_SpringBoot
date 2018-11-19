@@ -20,7 +20,7 @@ public class UsuarioDao {
 	}
 	
 	public Usuario findOne(Long userid) {
-		return usuarioRepository.getOne(userid);
+		return usuarioRepository.findById(userid);
 	}
 	
 	public void delete(Usuario user) {

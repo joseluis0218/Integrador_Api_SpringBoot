@@ -21,7 +21,7 @@ public class CapturaDao {
 	}
 	
 	public Captura findOne(Long capturaid) {
-		return capturaRepository.getOne(capturaid);
+		return capturaRepository.findById(capturaid);
 	}
 	
 	public void delete(Captura captura) {

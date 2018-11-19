@@ -20,7 +20,7 @@ public class EstadoDao {
 	}
 	
 	public Estado findOne(Long estadoid) {
-		return estadoRepository.getOne(estadoid);
+		return estadoRepository.findById(estadoid);
 	}
 	
 	public void delete(Estado estado) {
