@@ -23,10 +23,6 @@ public class Estado implements Serializable{
 	@NotNull
 	private String estado_rostro;
 	
-	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	@JoinColumn(name="id_estado")	
-	private List<Rostro> rostros;
-	
 	public Long getId() {
 		return id;
 	}
@@ -41,16 +37,9 @@ public class Estado implements Serializable{
 		this.estado_rostro = estado_rostro;
 	}	
 	
-	
-	public List<Rostro> getRostros() {
-		return rostros;
-	}
-	public void setRostros(List<Rostro> rostros) {
-		this.rostros = rostros;
-	}
 	@Override
 	public String toString() {
-		return "Estado [id=" + id + ", estado_rostro=" + estado_rostro + ", rostros=" + rostros + "]";
+		return "Estado [id=" + id + ", estado_rostro=" + estado_rostro +"]";
 	}
 
 	
