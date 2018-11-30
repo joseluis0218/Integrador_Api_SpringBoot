@@ -1,6 +1,13 @@
 package pe.edu.tecsup.apirest.models;
 
-public class Cantidad_rostros {
+import java.io.Serializable;
+
+public class Cantidad_rostros implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private Long Cant_Rostros;
 
 	public Long getCant_Rostros() {
@@ -11,7 +18,7 @@ public class Cantidad_rostros {
 	}
 	@Override
 	public String toString() {
-		return "Cantidad_rostros [Cant_Rostros=" + Cant_Rostros + "]";
+		return "Cantidad_rostros [ Cant_Rostros=" + Cant_Rostros + "]";
 	}
 	
 }

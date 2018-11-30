@@ -15,12 +15,12 @@ public class ConsultaDao {
 	@Autowired
 	private ConsultaRepository consultaRepository;
 	
-	public List<Estado_rostros> consultar(){
-		return consultaRepository.consultar();
+	public List<Estado_rostros> consultar(Long id_captura) throws Exception{
+		return consultaRepository.consultar(id_captura);
 	}
 	
-	public List<Cantidad_rostros> consultar2(){
-		return consultaRepository.consultar2();
+	public List<Cantidad_rostros> consultar2(Long id_captura)throws Exception{
+		return consultaRepository.consultar2(id_captura);
 	}
 	
 }

@@ -1,8 +1,16 @@
 package pe.edu.tecsup.apirest.models;
 
-public class Estado_rostros {
+import java.io.Serializable;
+
+public class Estado_rostros implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String estado_rostro;
+
+	
 
 	public String getEstado_rostro() {
 		return estado_rostro;
@@ -14,9 +22,4 @@ public class Estado_rostros {
 	public String toString() {
 		return "Estado_rostros [estado_rostro=" + estado_rostro + "]";
 	}
-
-
-	
-	
-
 }
