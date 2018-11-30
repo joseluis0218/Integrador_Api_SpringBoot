@@ -37,7 +37,7 @@ public class Usuario implements Serializable {
 	@NotNull
 	private String usuario;
 	@NotNull
-	private String contraseña;
+	private String password;
 	@NotNull
 	private String email;	
 	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
@@ -74,11 +74,11 @@ public class Usuario implements Serializable {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-	public String getContraseña() {
-		return contraseña;
+	public String getPassword() {
+		return password;
 	}
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getEmail() {
 		return email;
@@ -99,7 +99,7 @@ public class Usuario implements Serializable {
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombres=" + nombres + ", apellidos=" + apellidos + ", sexo=" + sexo
-				+ ", usuario=" + usuario + ", contraseña=" + contraseña + ", email=" + email + ", capturas=" + capturas
+				+ ", usuario=" + usuario + ", password=" + password + ", email=" + email + ", capturas=" + capturas
 				+ "]";
 	}
 	
