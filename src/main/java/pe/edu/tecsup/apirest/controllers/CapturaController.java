@@ -12,11 +12,13 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +38,9 @@ public class CapturaController {
 	@Autowired
 	CapturaDao capturaDao;
 	
-	@PostMapping(value="/capturas", headers="content-type=application/x-www-form-urlencoded")
+	@PostMapping(value="/capturas")
+	@ResponseStatus(HttpStatus.CREATED)
+
 	public Captura createUser(@Valid @RequestBody Captura captura) {
 		return capturaDao.save(captura);
 	}

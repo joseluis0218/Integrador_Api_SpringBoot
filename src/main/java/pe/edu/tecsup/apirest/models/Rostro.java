@@ -26,9 +26,7 @@ public class Rostro implements Serializable{
 	private Long id;
 	@NotNull
 	private String genero_rostro;
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name = "id_estado")
-	private Estado estado;
+
 
 	public Long getId() {
 		return id;
@@ -43,15 +41,9 @@ public class Rostro implements Serializable{
 		this.genero_rostro = genero_rostro;
 	}
 
-	public Estado getEstado() {
-		return estado;
-	}
-	public void setEstado(Estado estado) {
-		this.estado = estado;
-	}
 	@Override
 	public String toString() {
-		return "Rostro [id=" + id + ", genero_rostro=" + genero_rostro + ", estado=" + estado + "]";
+		return "Rostro [id=" + id + ", genero_rostro=" + genero_rostro +"]";
 	}
 
 

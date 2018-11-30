@@ -2,15 +2,20 @@ package pe.edu.tecsup.apirest.controllers;
 import java.util.List;
 
 import javax.validation.Valid;
+
+import org.aspectj.apache.bcel.classfile.Code;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import pe.edu.tecsup.apirest.models.Usuario;
@@ -21,8 +26,9 @@ import pe.edu.tecsup.apirest.models.dao.UsuarioDao;
 public class UsuarioController {
 	@Autowired
 	UsuarioDao usuarioDao;
-	
-	@PostMapping(value="/usuarios", headers="content-type=application/x-www-form-urlencoded")
+//	headers="content-type=application/x-www-form-urlencoded"
+	@PostMapping(value="/usuarios")
+	@ResponseStatus(HttpStatus.CREATED)
 	public Usuario createUser(@Valid @RequestBody Usuario user) {
 		return usuarioDao.save(user);
 	}
