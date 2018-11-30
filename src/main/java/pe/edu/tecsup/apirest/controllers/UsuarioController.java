@@ -56,7 +56,7 @@ public class UsuarioController {
 		user.setNombres(userDetails.getNombres());;
 		user.setApellidos(userDetails.getApellidos());
 		user.setUsuario(userDetails.getUsuario());
-		user.setContraseña(userDetails.getContraseña());
+		user.setPassword(userDetails.getPassword());
 		user.setEmail(userDetails.getEmail());
 		Usuario updateUser = usuarioDao.save(user);
 		return ResponseEntity.ok().body(updateUser);
