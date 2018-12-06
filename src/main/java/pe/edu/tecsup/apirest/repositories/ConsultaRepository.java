@@ -1,6 +1,7 @@
 package pe.edu.tecsup.apirest.repositories;
 
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -12,9 +13,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import pe.edu.tecsup.apirest.models.Cantidad_rostros;
 import pe.edu.tecsup.apirest.models.Captura;
-import pe.edu.tecsup.apirest.models.Estado_rostros;
+import pe.edu.tecsup.apirest.models.Datos;
 
 @Repository
 public class ConsultaRepository {
@@ -24,32 +24,18 @@ public class ConsultaRepository {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	public List<Estado_rostros> consultar(Long id_captura){
+	public List<Datos> consultar(Long id_captura){
 		logger.info("call consultar()");
 		
-		String sql = "SELECT rest_estados.estado_rostro FROM rest_rostros INNER JOIN rest_estados ON rest_rostros.id_estado=rest_estados.id WHERE rest_rostros.id_captura=? GROUP BY estado_rostro";
+		String sql = "SELECT rest_estados.estado_rostro,COUNT(rest_rostros.id) AS cantidad_rostros FROM rest_rostros INNER JOIN rest_estados ON rest_rostros.id_estado=rest_estados.id WHERE rest_rostros.id_captura=? GROUP BY estado_rostro\n" + 
+				"\n" + 
+				"";
 		
-		 List<Estado_rostros> datos = jdbcTemplate.query(sql, new RowMapper<Estado_rostros>() {
-			public Estado_rostros mapRow(ResultSet rs, int rowNum) throws SQLException{
-				Estado_rostros dato = new Estado_rostros();
+		 List<Datos> datos = jdbcTemplate.query(sql, new RowMapper<Datos>() {
+			public Datos mapRow(ResultSet rs, int rowNum) throws SQLException{
+				Datos dato = new Datos();
 				dato.setEstado_rostro(rs.getString("estado_rostro"));
-				return dato;
-			}
-		},id_captura);
-		logger.info("datos: "+datos);
-		return datos;
-	}
-
-	
-	public List<Cantidad_rostros> consultar2(Long id_captura){
-		logger.info("call consultar2()");
-		
-		String sql = "SELECT COUNT(rest_rostros.id) AS Cant_Rostros FROM rest_rostros INNER JOIN rest_estados ON rest_rostros.id_estado=rest_estados.id WHERE rest_rostros.id_captura=? GROUP BY estado_rostro";
-		
-		 List<Cantidad_rostros> datos = jdbcTemplate.query(sql, new RowMapper<Cantidad_rostros>() {
-			public Cantidad_rostros mapRow(ResultSet rs, int rowNum) throws SQLException{
-				Cantidad_rostros dato = new Cantidad_rostros();
-				dato.setCant_Rostros(rs.getLong("Cant_Rostros"));
+				dato.setCantidad_rostros(rs.getInt("cantidad_rostros"));
 				return dato;
 			}
 		},id_captura);
