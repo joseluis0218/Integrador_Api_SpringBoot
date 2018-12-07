@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
+import pe.edu.tecsup.apirest.models.Dato2;
 import pe.edu.tecsup.apirest.models.Datos;
 import pe.edu.tecsup.apirest.models.dao.ConsultaDao;
 
@@ -27,6 +29,14 @@ public class ConsultaController {
 		logger.info("call datos");
 		
 		List<Datos> dato = consultaDao.consultar(id_captura);
+		
+		return ResponseEntity.ok().body(dato);
+	}
+	@GetMapping("/grafica/{id_usuario}")
+	public ResponseEntity<?> datos2(@PathVariable Long id_usuario) throws Exception {
+		logger.info("call datos");
+		
+		List<Dato2> dato = consultaDao.consulta2(id_usuario);
 		
 		return ResponseEntity.ok().body(dato);
 	}

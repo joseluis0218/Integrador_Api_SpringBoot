@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
@@ -33,8 +34,7 @@ public class Usuario implements Serializable {
 	@NotNull
 	private String apellidos;
 	@NotNull
-	private String sexo;
-	@NotNull
+	@UniqueElements
 	private String usuario;
 	@NotNull
 	private String password;
@@ -61,12 +61,6 @@ public class Usuario implements Serializable {
 	}
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
-	}
-	public String getSexo() {
-		return sexo;
-	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
 	}
 	public String getUsuario() {
 		return usuario;
@@ -98,9 +92,8 @@ public class Usuario implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nombres=" + nombres + ", apellidos=" + apellidos + ", sexo=" + sexo
-				+ ", usuario=" + usuario + ", password=" + password + ", email=" + email + ", capturas=" + capturas
-				+ "]";
+		return "Usuario [id=" + id + ", nombres=" + nombres + ", apellidos=" + apellidos + ", usuario=" + usuario
+				+ ", password=" + password + ", email=" + email + ", capturas=" + capturas + "]";
 	}
 	
 }

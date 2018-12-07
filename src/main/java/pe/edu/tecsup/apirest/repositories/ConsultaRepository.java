@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import pe.edu.tecsup.apirest.models.Captura;
+import pe.edu.tecsup.apirest.models.Dato2;
 import pe.edu.tecsup.apirest.models.Datos;
 
 @Repository
@@ -39,6 +40,26 @@ public class ConsultaRepository {
 				return dato;
 			}
 		},id_captura);
+		logger.info("datos: "+datos);
+		return datos;
+	}
+	
+	public List<Dato2> consulta2(Long id_usuario){
+		
+		logger.info("call consulta2");
+		
+		String sql = "SELECT fecha_captura, cantidad_rostros FROM rest_capturas WHERE id_usuario = ? ORDER BY fecha_captura DESC";
+		
+		List<Dato2> datos = jdbcTemplate.query(sql, new RowMapper<Dato2>(){
+			public Dato2 mapRow(ResultSet res, int rowNum) throws SQLException{
+				
+				Dato2 dato = new Dato2();
+				
+				dato.setFecha_captura(res.getDate("fecha_captura"));
+				dato.setCantidad_rostros(res.getInt("cantidad_rostros"));
+				return dato;
+			}
+		},id_usuario);
 		logger.info("datos: "+datos);
 		return datos;
 	}
