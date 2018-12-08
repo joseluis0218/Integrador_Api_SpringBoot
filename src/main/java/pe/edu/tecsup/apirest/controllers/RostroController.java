@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -25,7 +26,7 @@ public class RostroController {
 	
 	@PostMapping(value="/rostros")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Rostro createRostro(@Valid @RequestBody Rostro user) {
+	public Rostro createRostro(@Valid @ModelAttribute @RequestBody Rostro user) {
 		return rostroDao.save(user);
 	}
 	@GetMapping("/rostros")

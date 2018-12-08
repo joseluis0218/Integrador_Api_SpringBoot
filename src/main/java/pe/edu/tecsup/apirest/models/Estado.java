@@ -22,6 +22,8 @@ public class Estado implements Serializable{
 	private Long id;
 	@NotNull
 	private String estado_rostro;
+	@OneToMany(mappedBy="id_estado",fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	private List<Rostro> rostros;
 	
 	public Long getId() {
 		return id;
@@ -37,6 +39,12 @@ public class Estado implements Serializable{
 		this.estado_rostro = estado_rostro;
 	}	
 	
+	public List<Rostro> getRostros() {
+		return rostros;
+	}
+	public void setRostros(List<Rostro> rostros) {
+		this.rostros = rostros;
+	}
 	@Override
 	public String toString() {
 		return "Estado [id=" + id + ", estado_rostro=" + estado_rostro +"]";

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,9 +36,12 @@ public class Captura implements Serializable {
 	private String nombre_captura;
 	@NotNull
 	private Integer cantidad_rostros;
-	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	@JoinColumn(name="id_captura")
+	@NotNull
+	private Long id_usuario;
+	@OneToMany(mappedBy="id_captura",fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Rostro> rostros;
+	
+
 	
 	public Long getId() {
 		return id;
@@ -69,10 +73,20 @@ public class Captura implements Serializable {
 	public void setRostros(List<Rostro> rostros) {
 		this.rostros = rostros;
 	}
+	
+	
+	public Long getId_usuario() {
+		return id_usuario;
+	}
+	public void setId_usuario(Long id_usuario) {
+		this.id_usuario = id_usuario;
+	}
+
 	@Override
 	public String toString() {
 		return "Captura [id=" + id + ", fecha_captura=" + fecha_captura + ", nombre_captura=" + nombre_captura
-				+ ", cantidad_rostros=" + cantidad_rostros + ", rostros=" + rostros + "]";
+				+ ", cantidad_rostros=" + cantidad_rostros + ", id_usuario=" + id_usuario + ", rostros=" + rostros
+				+ "]";
 	}
 
 	

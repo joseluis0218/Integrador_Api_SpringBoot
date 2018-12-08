@@ -27,9 +27,9 @@ public class UsuarioController {
 	@Autowired
 	UsuarioDao usuarioDao;
 //	headers="content-type=application/x-www-form-urlencoded"
-	@PostMapping(value="/usuarios")
-	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario createUser(@Valid @RequestBody Usuario user) {
+	@PostMapping(value="/usuarios", headers="content-type=application/x-www-form-urlencoded")
+//	@ResponseStatus(HttpStatus.CREATED)
+	public Usuario createUser(@Valid @ModelAttribute @RequestBody Usuario user) {
 		return usuarioDao.save(user);
 	}
 	@GetMapping("/usuarios")
@@ -55,7 +55,7 @@ public class UsuarioController {
 		}
 		user.setNombres(userDetails.getNombres());;
 		user.setApellidos(userDetails.getApellidos());
-		user.setUsuario(userDetails.getUsuario());
+		user.setUsername(userDetails.getUsername());
 		user.setPassword(userDetails.getPassword());
 		user.setEmail(userDetails.getEmail());
 		Usuario updateUser = usuarioDao.save(user);

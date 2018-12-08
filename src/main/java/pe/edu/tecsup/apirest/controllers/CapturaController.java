@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
 import pe.edu.tecsup.apirest.models.Captura;
@@ -41,7 +42,7 @@ public class CapturaController {
 	@PostMapping(value="/capturas")
 	@ResponseStatus(HttpStatus.CREATED)
 
-	public Captura createUser(@Valid @RequestBody Captura captura) {
+	public Captura createUser(@Valid @ModelAttribute @RequestBody Captura captura) {
 		return capturaDao.save(captura);
 	}
 	@GetMapping("/capturas")

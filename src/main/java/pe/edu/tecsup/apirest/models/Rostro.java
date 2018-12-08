@@ -26,9 +26,11 @@ public class Rostro implements Serializable{
 	private Long id;
 	@NotNull
 	private String genero_rostro;
-	@ManyToOne
-	@JoinColumn(name="id_estado")
-	private Estado estado;
+	@NotNull
+	private Long id_estado;	
+	@NotNull
+	private Long id_captura;
+	
 	public Long getId() {
 		return id;
 	}
@@ -42,21 +44,21 @@ public class Rostro implements Serializable{
 		this.genero_rostro = genero_rostro;
 	}
 	
-	public Estado getEstado() {
-		return estado;
+	public Long getId_estado() {
+		return id_estado;
 	}
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public void setId_estado(Long id_estado) {
+		this.id_estado = id_estado;
+	}
+	public Long getId_captura() {
+		return id_captura;
+	}
+	public void setId_captura(Long id_captura) {
+		this.id_captura = id_captura;
 	}
 	@Override
 	public String toString() {
-		return "Rostro [id=" + id + ", genero_rostro=" + genero_rostro + ", estado=" + estado + "]";
+		return "Rostro [id=" + id + ", genero_rostro=" + genero_rostro + ", id_estado=" + id_estado + ", id_captura="
+				+ id_captura + "]";
 	}
-
-
-	
-	
-	
-	
-	
 }

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -28,7 +29,7 @@ public class EstadoController {
 	
 	@PostMapping(value="/estados")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Estado createEstado(@Valid @RequestBody Estado estado) {
+	public Estado createEstado(@Valid @ModelAttribute @RequestBody Estado estado) {
 		return estadoDao.save(estado);
 	}
 	@GetMapping("/estados")

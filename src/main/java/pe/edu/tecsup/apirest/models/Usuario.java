@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.UniqueElements;
@@ -34,14 +36,14 @@ public class Usuario implements Serializable {
 	@NotNull
 	private String apellidos;
 	@NotNull
-	@UniqueElements
-	private String usuario;
+	@Column(unique=true)
+	private String username;
 	@NotNull
 	private String password;
 	@NotNull
+	@Column(unique=true)
 	private String email;	
-	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	@JoinColumn(name="id_usuario")
+	@OneToMany(mappedBy="id_usuario",fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Captura> capturas;
 
 	public Long getId() {
@@ -62,11 +64,11 @@ public class Usuario implements Serializable {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	public String getUsuario() {
-		return usuario;
+	public String getUsername() {
+		return username;
 	}
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getPassword() {
 		return password;
@@ -92,8 +94,10 @@ public class Usuario implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nombres=" + nombres + ", apellidos=" + apellidos + ", usuario=" + usuario
+		return "Usuario [id=" + id + ", nombres=" + nombres + ", apellidos=" + apellidos + ", username=" + username
 				+ ", password=" + password + ", email=" + email + ", capturas=" + capturas + "]";
 	}
+
+
 	
 }
