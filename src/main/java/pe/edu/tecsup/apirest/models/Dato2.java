@@ -30,11 +30,9 @@ public class Dato2 implements Serializable {
 	public void setCantidad_rostros(Integer cantidad_rostros) {
 		this.cantidad_rostros = cantidad_rostros;
 	}
-
 	@Override
 	public String toString() {
 		return "Dato2 [fecha_captura=" + fecha_captura + ", cantidad_rostros=" + cantidad_rostros + "]";
 	}
-	
 	
 }
