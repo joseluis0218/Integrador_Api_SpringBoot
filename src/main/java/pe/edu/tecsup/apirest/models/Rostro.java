@@ -1,19 +1,13 @@
 package pe.edu.tecsup.apirest.models;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="rest_rostros")
 public class Rostro implements Serializable{
@@ -24,11 +18,14 @@ public class Rostro implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotNull
+	@NotNull(message="Este campo no puede ser nulo")
+	@NotEmpty(message="Este campo no puede ser vacio")
 	private String genero_rostro;
-	@NotNull
+	@NotNull(message="Este campo no puede ser nulo")
+	@NotEmpty(message="Este campo no puede ser vacio")
 	private Long id_estado;	
-	@NotNull
+	@NotNull(message="Este campo no puede ser nulo")
+	@NotEmpty(message="Este campo no puede ser vacio")
 	private Long id_captura;
 	
 	public Long getId() {

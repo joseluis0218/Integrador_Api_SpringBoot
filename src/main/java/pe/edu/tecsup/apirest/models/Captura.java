@@ -8,13 +8,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -31,18 +31,20 @@ public class Captura implements Serializable {
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@NotEmpty(message="Este campo no puede ser vacio")
 	private Date fecha_captura;
-	@NotNull
+	@NotNull(message="Este campo no puede ser nulo")
+	@Pattern(regexp = ".*\\.jpg|.*\\.jpeg",message="Solamente se da soporte a las imágenes de tipos JPEG o JPG.")
+	@NotEmpty(message="Este campo no puede ser vacio")
 	private String nombre_captura;
-	@NotNull
+	@NotNull(message="Este campo no puede ser nulo")
+	@NotEmpty(message="Este campo no puede ser vacio")
 	private Integer cantidad_rostros;
-	@NotNull
+	@NotNull(message="Este campo no puede ser nulo")
+	@NotEmpty(message="Este campo no puede ser vacio")
 	private Long id_usuario;
 	@OneToMany(mappedBy="id_captura",fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Rostro> rostros;
-	
-
-	
 	public Long getId() {
 		return id;
 	}
@@ -73,9 +75,7 @@ public class Captura implements Serializable {
 	public void setRostros(List<Rostro> rostros) {
 		this.rostros = rostros;
 	}
-	
-	
-	public Long getId_usuario() {
+		public Long getId_usuario() {
 		return id_usuario;
 	}
 	public void setId_usuario(Long id_usuario) {

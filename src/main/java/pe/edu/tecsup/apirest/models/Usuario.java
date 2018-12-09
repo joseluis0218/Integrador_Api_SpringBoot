@@ -11,13 +11,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
@@ -31,17 +31,24 @@ public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotNull
+	@NotNull(message="Este campo no puede ser nulo")
+	@NotEmpty(message="Este campo no puede ser vacio")
 	private String nombres;
-	@NotNull
-	private String apellidos;
-	@NotNull
+	@NotNull(message="Este campo no puede ser nulo")
+	@NotEmpty(message="Este campo no puede ser vacio")
+	private String apellidos;		
+	@NotNull(message="Este campo no puede ser nulo")
+	@NotEmpty(message="Este campo no puede ser vacio")
 	@Column(unique=true)
+	@NotEmpty(message="Este campo no puede ser vacio")
 	private String username;
-	@NotNull
+	@NotNull(message="Este campo no puede ser nulo")
+	@NotEmpty(message="Este campo no puede ser vacio")
 	private String password;
-	@NotNull
+	@NotNull(message="Este campo no puede ser nulo")
 	@Column(unique=true)
+	@NotEmpty(message="Este campo no puede ser vacio")
+	@Email
 	private String email;	
 	@OneToMany(mappedBy="id_usuario",fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Captura> capturas;
