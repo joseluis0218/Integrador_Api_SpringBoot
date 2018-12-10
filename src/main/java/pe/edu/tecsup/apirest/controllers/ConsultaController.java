@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import pe.edu.tecsup.apirest.models.Captura;
-import pe.edu.tecsup.apirest.models.Dato2;
 import pe.edu.tecsup.apirest.models.Datos;
 import pe.edu.tecsup.apirest.models.dao.ConsultaDao;
 
@@ -35,7 +34,7 @@ public class ConsultaController {
 	}
 	
 	@GetMapping("/usuarios/{id_usuario}/capturas")
-	public ResponseEntity<?> datos3(@PathVariable Long id_usuario) throws Exception {
+	public ResponseEntity<?> datos2(@PathVariable Long id_usuario) throws Exception {
 		logger.info("call datos");
 		
 		List<Captura> dato = consultaDao.consulta2(id_usuario);
