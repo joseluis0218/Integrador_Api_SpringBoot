@@ -26,7 +26,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
 import pe.edu.tecsup.apirest.models.Captura;
+import pe.edu.tecsup.apirest.models.Usuario;
 import pe.edu.tecsup.apirest.models.dao.CapturaDao;
+import pe.edu.tecsup.apirest.models.dao.UsuarioDao;
 
 
 
@@ -38,7 +40,7 @@ public class CapturaController {
 	
 	@Autowired
 	CapturaDao capturaDao;
-	
+
 	@PostMapping(value="/capturas")
 	@ResponseStatus(HttpStatus.CREATED)
 
@@ -49,7 +51,7 @@ public class CapturaController {
 	public List<Captura> getAllCapturas(){
 		return capturaDao.findAll();
 	}
-	
+
 	@GetMapping("/capturas/{id}")
 	public ResponseEntity<Captura> getCapturaById(@PathVariable(value="id") Long capturaid){
 			
