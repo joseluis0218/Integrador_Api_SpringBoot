@@ -31,17 +31,13 @@ public class Captura implements Serializable {
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	@NotEmpty(message="Este campo no puede ser vacio")
 	private Date fecha_captura;
 	@NotNull(message="Este campo no puede ser nulo")
 	@Pattern(regexp = ".*\\.jpg|.*\\.jpeg",message="Solamente se da soporte a las imágenes de tipos JPEG o JPG.")
-	@NotEmpty(message="Este campo no puede ser vacio")
 	private String nombre_captura;
 	@NotNull(message="Este campo no puede ser nulo")
-	@NotEmpty(message="Este campo no puede ser vacio")
 	private Integer cantidad_rostros;
 	@NotNull(message="Este campo no puede ser nulo")
-	@NotEmpty(message="Este campo no puede ser vacio")
 	private Long id_usuario;
 	@OneToMany(mappedBy="id_captura",fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Rostro> rostros;

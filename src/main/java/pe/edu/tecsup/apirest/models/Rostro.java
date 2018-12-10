@@ -19,13 +19,10 @@ public class Rostro implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotNull(message="Este campo no puede ser nulo")
-	@NotEmpty(message="Este campo no puede ser vacio")
 	private String genero_rostro;
 	@NotNull(message="Este campo no puede ser nulo")
-	@NotEmpty(message="Este campo no puede ser vacio")
 	private Long id_estado;	
 	@NotNull(message="Este campo no puede ser nulo")
-	@NotEmpty(message="Este campo no puede ser vacio")
 	private Long id_captura;
 	
 	public Long getId() {

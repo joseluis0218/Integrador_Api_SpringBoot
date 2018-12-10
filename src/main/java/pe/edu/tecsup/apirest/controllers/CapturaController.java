@@ -34,7 +34,7 @@ import pe.edu.tecsup.apirest.models.dao.CapturaDao;
 @RequestMapping("/api")
 public class CapturaController {
 	private static final Logger logger = LoggerFactory.getLogger(CapturaController.class);
-	private static final String FILEPATH = "/opt/integrador-api/images";
+	private static final String FILEPATH = "src/integrador-api/images";
 	
 	@Autowired
 	CapturaDao capturaDao;
