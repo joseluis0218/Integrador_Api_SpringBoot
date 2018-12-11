@@ -26,9 +26,7 @@ public class ConsultaRepository {
 	public List<Datos> consultar(Long id_captura){
 		logger.info("call consultar()");
 		
-		String sql = "SELECT rest_estados.estado_rostro,COUNT(rest_rostros.id) AS cantidad_rostros FROM rest_rostros INNER JOIN rest_estados ON rest_rostros.id_estado=rest_estados.id WHERE rest_rostros.id_captura=? GROUP BY estado_rostro\n" + 
-				"\n" + 
-				"";
+		String sql = "SELECT estado_rostro, COUNT(id) AS cantidad_rostros FROM rest_rostros WHERE id_captura = ? GROUP BY estado_rostro";
 		
 		 List<Datos> datos = jdbcTemplate.query(sql, new RowMapper<Datos>() {
 			public Datos mapRow(ResultSet rs, int rowNum) throws SQLException{

@@ -21,7 +21,7 @@ public class Rostro implements Serializable{
 	@NotNull(message="Este campo no puede ser nulo")
 	private String genero_rostro;
 	@NotNull(message="Este campo no puede ser nulo")
-	private String estado;	
+	private String estado_rostro;	
 	@NotNull(message="Este campo no puede ser nulo")
 	private Long id_captura;
 	
@@ -37,11 +37,11 @@ public class Rostro implements Serializable{
 	public void setGenero_rostro(String genero_rostro) {
 		this.genero_rostro = genero_rostro;
 	}
-	public String getEstado() {
-		return estado;
+	public String getEstado_rostro() {
+		return estado_rostro;
 	}
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setEstado(String estado_rostro) {
+		this.estado_rostro = estado_rostro;
 	}
 	public Long getId_captura() {
 		return id_captura;
@@ -51,7 +51,7 @@ public class Rostro implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Rostro [id=" + id + ", genero_rostro=" + genero_rostro + ", estado=" + estado + ", id_captura="
+		return "Rostro [id=" + id + ", genero_rostro=" + genero_rostro + ", estado=" + estado_rostro + ", id_captura="
 				+ id_captura + "]";
 	}
 }
