@@ -33,7 +33,6 @@ public class Captura implements Serializable {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date fecha_captura;
 	@NotNull(message="Este campo no puede ser nulo")
-	@Pattern(regexp = ".*\\.jpg|.*\\.jpeg",message="Solamente se da soporte a las imágenes de tipos JPEG o JPG.")
 	private String nombre_captura;
 	@NotNull(message="Este campo no puede ser nulo")
 	private Integer cantidad_rostros;
