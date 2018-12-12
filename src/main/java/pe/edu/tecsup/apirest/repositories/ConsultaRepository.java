@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import pe.edu.tecsup.apirest.models.Captura;
+import pe.edu.tecsup.apirest.models.Dato2;
 import pe.edu.tecsup.apirest.models.Datos;
 
 @Repository
@@ -58,6 +59,25 @@ public class ConsultaRepository {
 				return dato;
 			}
 		},id_usuario);
+		logger.info("datos: "+datos);
+		return datos;
+	}
+	public List<Dato2> consulta3(){
+		
+		logger.info("call consulta3");
+		
+		String sql = "SELECT fecha_captura,COUNT(id) AS cantidad_capturas FROM rest_capturas GROUP BY fecha_captura";
+		
+		List<Dato2> datos = jdbcTemplate.query(sql, new RowMapper<Dato2>(){
+			public Dato2 mapRow(ResultSet res, int rowNum) throws SQLException{
+				
+				Dato2 dato = new Dato2();
+				
+				dato.setFecha_captura(res.getDate("fecha_captura"));
+				dato.setCantidad_capturas(res.getInt("cantidad_capturas"));
+				return dato;
+			}
+		});
 		logger.info("datos: "+datos);
 		return datos;
 	}

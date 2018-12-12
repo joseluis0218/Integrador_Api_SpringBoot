@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import pe.edu.tecsup.apirest.models.Captura;
+import pe.edu.tecsup.apirest.models.Dato2;
 import pe.edu.tecsup.apirest.models.Datos;
 import pe.edu.tecsup.apirest.models.dao.ConsultaDao;
 
@@ -38,6 +39,15 @@ public class ConsultaController {
 		logger.info("call datos");
 		
 		List<Captura> dato = consultaDao.consulta2(id_usuario);
+		
+		return ResponseEntity.ok().body(dato);
+	}
+	
+	@GetMapping("/grafica/capturas")
+	public ResponseEntity<?> datos3() throws Exception {
+		logger.info("call datos");
+		
+		List<Dato2> dato = consultaDao.consulta3();
 		
 		return ResponseEntity.ok().body(dato);
 	}

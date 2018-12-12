@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pe.edu.tecsup.apirest.models.Captura;
+import pe.edu.tecsup.apirest.models.Dato2;
 import pe.edu.tecsup.apirest.models.Datos;
 import pe.edu.tecsup.apirest.repositories.ConsultaRepository;
 
@@ -23,4 +24,7 @@ public class ConsultaDao {
 		return consultaRepository.consulta2(id_usuario);
 	}
 
+	public List<Dato2> consulta3() throws Exception{
+		return consultaRepository.consulta3();
+	}
 }
