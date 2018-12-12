@@ -44,7 +44,7 @@ public class Usuario implements Serializable {
 	private String username;
 	@NotNull(message="Este campo no puede ser nulo")
 	@NotEmpty(message="Este campo no puede ser vacio")
-	private String password;
+	private	 String password;
 	@NotNull(message="Este campo no puede ser nulo")
 	@Column(unique=true)
 	@NotEmpty(message="Este campo no puede ser vacio")

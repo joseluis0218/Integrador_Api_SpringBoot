@@ -29,7 +29,11 @@ public class UsuarioController {
 //	headers="content-type=application/x-www-form-urlencoded"
 	@PostMapping(value="/usuarios")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario createUser(@Valid @ModelAttribute @RequestBody Usuario user) {
+	public Usuario createUser(@ModelAttribute @Valid @RequestBody Usuario user) {
+		return usuarioDao.save(user);
+	}
+	@PostMapping(value="/web/usuarios", headers="content-type=application/json")
+	public Usuario createUserWeb(@RequestBody @Valid Usuario user) {
 		return usuarioDao.save(user);
 	}
 	@GetMapping("/usuarios")
