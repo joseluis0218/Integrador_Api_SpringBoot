@@ -82,10 +82,13 @@
             <groupId>com.microsoft.azure</groupId>
             <artifactId>azure-webapp-maven-plugin</artifactId>
             <configuration>
-
+            
+   				 <authentication>
+   					     <serverId>azure-auth</serverId>
+    			</authentication>
                 <!-- Web App information -->
-                <resourceGroup>SistemaReconocimientoFacial</resourceGroup>
-                <appName>SistemaReconocimientoFacial</appName>
+                <resourceGroup>baeldung</resourceGroup>
+                <appName>reconocimientofacial</appName>
 
                 <!-- Java Runtime Stack for Web App on Linux-->
                 <linuxRuntime>tomcat 8.5-jre8</linuxRuntime>
