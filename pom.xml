@@ -73,23 +73,31 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		<plugin>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-webapp-maven-plugin</artifactId>
-            <!-- check Maven Central for the latest version -->
-            <version>1.3.0</version>
-         </plugin>
-         <plugin>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-webapp-maven-plugin</artifactId>
-            <configuration>
-                <!-- Web App information -->
-                <resourceGroup>baeldung</resourceGroup>
-                <appName>reconocimientofacial</appName>
+ <groupId>com.microsoft.azure</groupId>
+ <artifactId>azure-webapp-maven-plugin</artifactId>
+ <version>1.4.0</version>
+ <configuration>
+   <deploymentType>jar</deploymentType>
+                <authentication>
+     			   <serverId>azure-auth</serverId>
+     			   
+   				 </authentication>
+   <!-- configure app to run on port 80, required by App Service -->
+   <appSettings>
+     <property> 
+       <name>JAVA_OPTS</name> 
+       <value>-Dserver.port=80</value> 
+     </property> 
+   </appSettings>
 
-                <!-- Java Runtime Stack for Web App on Linux-->
-                <linuxRuntime>tomcat 8.5-jre8</linuxRuntime>
-            </configuration>
-         </plugin> 
+   <!-- Web App information -->
+   <resourceGroup>integrador</resourceGroup>
+   <appName>appreconocimientofacial</appName>
+
+   <!-- Java Runtime Stack for Web App on Linux-->
+   <linuxRuntime>jre8</linuxRuntime>
+ </configuration>
+</plugin>
 		</plugins>
 
 	</build>
